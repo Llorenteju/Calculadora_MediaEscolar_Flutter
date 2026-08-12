@@ -48,5 +48,5 @@ A new Flutter project.
     - [x] Mostrar a maior nota
     - [x] Mostrar a menor nota
     - [x] Informar quantos pontos faltaram para a aprovação
-    - [ ] Adicionar campo para frequência
-    - [ ] Reprovar o aluno que tiver frequência menor que 75% 
+    - [x] Adicionar campo para frequência
+    - [x] Reprovar o aluno que tiver frequência menor que 75% 

@@ -38,6 +38,10 @@ class _MediaEscolarPageState extends State<MediaEscolarPage> {
   double pontosFaltantes = 0;
   double frequencia = 0;
 
+  // Adicionado para os desafios
+  double maiorNota = 0;
+  double menorNota = 0;
+
   void calcularMedia() {
     String nome = nomeController.text.trim();
 
@@ -79,6 +83,36 @@ class _MediaEscolarPageState extends State<MediaEscolarPage> {
 
     double mediaCalculada = (nota1 + nota2 + nota3 + nota4) / 4;
 
+    // Encontrar a maior nota
+    double maior = nota1;
+
+    if (nota2 > maior) {
+      maior = nota2;
+    }
+
+    if (nota3 > maior) {
+      maior = nota3;
+    }
+
+    if (nota4 > maior) {
+      maior = nota4;
+    }
+
+    // Encontrar a menor nota
+    double menor = nota1;
+
+    if (nota2 < menor) {
+      menor = nota2;
+    }
+
+    if (nota3 < menor) {
+      menor = nota3;
+    }
+
+    if (nota4 < menor) {
+      menor = nota4;
+    }
+
     String situacaoCalculada;
 
     if (frequenciaDigitada < 75) {
@@ -96,6 +130,10 @@ class _MediaEscolarPageState extends State<MediaEscolarPage> {
       media = mediaCalculada;
       frequencia = frequenciaDigitada;
       situacao = situacaoCalculada;
+
+      // Salva a maior e a menor nota
+      maiorNota = maior;
+      menorNota = menor;
 
       if (mediaCalculada < 7) {
         pontosFaltantes = 7 - mediaCalculada;
@@ -125,6 +163,10 @@ class _MediaEscolarPageState extends State<MediaEscolarPage> {
       frequencia = 0;
       situacao = '';
       pontosFaltantes = 0;
+
+      // Limpa também a maior e menor nota
+      maiorNota = 0;
+      menorNota = 0;
     });
   }
 
@@ -285,6 +327,22 @@ class _MediaEscolarPageState extends State<MediaEscolarPage> {
 
                       Text(
                         'Frequência: ${frequencia.toStringAsFixed(1)}%',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+
+                      // Maior nota
+                      const SizedBox(height: 10),
+
+                      Text(
+                        'Maior nota: ${maiorNota.toStringAsFixed(1)}',
+                        style: const TextStyle(fontSize: 20),
+                      ),
+
+                      // Menor nota
+                      const SizedBox(height: 10),
+
+                      Text(
+                        'Menor nota: ${menorNota.toStringAsFixed(1)}',
                         style: const TextStyle(fontSize: 20),
                       ),
 
